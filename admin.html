@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090508">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Spring Blossom Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <header class="admin-header">
+    <a class="admin-brand" href="index.html">
+      <span>SB</span>
+      <div><strong>Spring Blossom</strong><small>Website admin</small></div>
+    </a>
+    <a class="view-site" href="index.html" target="_blank" rel="noopener">View website ↗</a>
+  </header>
+
+  <main>
+    <section class="login-card" id="login-view">
+      <p class="eyebrow">Private access</p>
+      <h1>Welcome back.</h1>
+      <p>Verify your admin credentials to view and update the website source.</p>
+      <form id="login-form">
+        <label for="username">Admin username</label>
+        <input id="username" name="username" type="text" autocomplete="username" required>
+        <label for="password">Admin password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+        <button type="submit">Sign in</button>
+        <p class="form-message" id="login-message" role="status"></p>
+      </form>
+    </section>
+
+    <section class="dashboard" id="dashboard" hidden>
+      <div class="dashboard-heading">
+        <div><p class="eyebrow">Website controls</p><h1>Edit your site.</h1></div>
+        <button class="quiet-button" id="logout-button" type="button">Sign out</button>
+      </div>
+
+      <nav class="admin-tabs" aria-label="Admin sections">
+        <button class="admin-tab active" type="button" data-panel="html-panel">Page HTML</button>
+        <button class="admin-tab" type="button" data-panel="images-panel">Pictures</button>
+      </nav>
+
+      <section class="admin-panel active" id="html-panel">
+        <div class="panel-heading">
+          <div><h2>Edit website text</h2><p>Use Find text to jump to the words you want to change. Edit only the words between the HTML tags, check the preview, then save.</p></div>
+          <div class="panel-actions">
+            <button id="reload-source" class="quiet-button" type="button">Reload source</button>
+            <button id="preview-button" class="quiet-button" type="button">Refresh preview</button>
+          </div>
+        </div>
+        <div class="editor-help">
+          <div>
+            <strong>Simple example</strong>
+            <span>To change <code>&lt;h2&gt;Our Menu&lt;/h2&gt;</code>, replace only <code>Our Menu</code>. Leave <code>&lt;h2&gt;</code> and <code>&lt;/h2&gt;</code> in place.</span>
+          </div>
+          <div class="find-control">
+            <label for="find-text">Find text on the website</label>
+            <div><input id="find-text" type="search" placeholder="Example: Our Menu"><button id="find-button" class="quiet-button" type="button">Find</button></div>
+          </div>
+        </div>
+        <div class="editor-grid">
+          <div class="editor-wrap">
+            <label for="html-editor">Complete index.html source</label>
+            <textarea id="html-editor" spellcheck="false" aria-label="index.html source"></textarea>
+          </div>
+          <div class="preview-wrap">
+            <span>Preview</span>
+            <iframe id="site-preview" title="Website preview" sandbox="allow-scripts"></iframe>
+          </div>
+        </div>
+        <div class="save-row">
+          <p class="form-message" id="html-message" role="status"></p>
+          <button id="save-html" type="button">Save & publish</button>
+        </div>
+      </section>
+
+      <section class="admin-panel" id="images-panel">
+        <div class="panel-heading">
+          <div><h2>Swap pictures</h2><p>Choose a replacement PNG image for any existing slot, up to 3 MB.</p></div>
+        </div>
+        <div class="image-grid" id="image-grid"></div>
+        <p class="form-message" id="image-message" role="status"></p>
+      </section>
+    </section>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>
